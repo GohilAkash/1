@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Charts Example</title>
+    <!-- Load the Google Charts library -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load the charts packages
+        google.charts.load('current', {'packages':['corechart', 'bar', 'line']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            // Draw a Pie Chart
+            drawPieChart();
+            // Draw a Column Chart
+            drawColumnChart();
+            // Draw a Line Chart
+            drawLineChart();
+        }
+
+        function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Category', 'Amount'],
+                ['Apples', 30],
+                ['Bananas', 50],
+                ['Cherries', 20],
+                ['Oranges', 40],
+                ['Grapes', 10]
+            ]);
+
+            var options = {
+                title: 'Fruit Distribution',
+                is3D: true
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        function drawColumnChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'Sales'],
+                ['Jan', 1000],
+                ['Feb', 1170],
+                ['Mar', 660],
+                ['Apr', 1030],
+                ['May', 800]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Monthly Sales',
+                    subtitle: 'Sales from January to May'
+                },
+                bars: 'vertical'
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+            chart.draw(data, options);
+        }
+
+        function drawLineChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'X');
+            data.addColumn('number', 'Y');
+
+            data.addRows([
+                [1, 5], [2, 15], [3, 10], [4, 20], [5, 25], [6, 30],
+                [7, 35], [8, 40], [9, 45], [10, 50]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Line Chart of Random Data',
+                    subtitle: 'Data over X-axis'
+                },
+                hAxis: { title: 'X' },
+                vAxis: { title: 'Y' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h1>Google Charts API Examples</h1>
+    <div id="piechart" style="width: 500px; height: 300px;"></div>
+    <div id="columnchart" style="width: 500px; height: 300px;"></div>
+    <div id="linechart" style="width: 500px; height: 300px;"></div>
+</body>
+</html>

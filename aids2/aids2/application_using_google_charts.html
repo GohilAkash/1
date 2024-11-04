@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul's Tech Mobile Sales Dashboard - 2024</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+
+        header {
+            background-color: #3b5998;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .chart {
+            width: 45%;
+            height: 400px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3b5998;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            // Sales by Month Bar Chart
+            var data1 = google.visualization.arrayToDataTable([
+                ['Month', 'Sales'],
+                ['January', 100],
+                ['February', 80],
+                ['March', 120],
+                ['April', 90],
+                ['May', 60],
+                ['June', 130],
+                ['July', 110],
+                ['August', 140],
+                ['September', 70],
+                ['October', 150],
+                ['November', 160],
+                ['December', 200]
+            ]);
+
+            var options1 = {
+                title: 'Mobile Sales by Month - 2024',
+                hAxis: { title: 'Month' },
+                vAxis: { title: 'Sales' },
+                colors: ['#4CAF50'],
+                backgroundColor: '#f0f4f8',
+                chartArea: { width: '70%', height: '70%' },
+                bar: { groupWidth: "60%" }
+            };
+
+            var chart1 = new google.visualization.ColumnChart(document.getElementById('chart1'));
+            chart1.draw(data1, options1);
+
+            // Sales Distribution Pie Chart
+            var data2 = google.visualization.arrayToDataTable([
+                ['Mobile Brand', 'Sales'],
+                ['NOTHING', 600], // Updated: NOTHING has the highest sales
+                ['Apple', 500],
+                ['Samsung', 400],
+                ['Xiaomi', 300],
+                ['Oppo', 250],
+                ['Vivo', 200],
+                ['OnePlus', 350]
+            ]);
+
+            var options2 = {
+                title: 'Mobile Brand Sales Distribution - 2024',
+                pieHole: 0.4,
+                colors: ['#FF5722', '#FF9800', '#FFC107', '#8BC34A', '#00BCD4', '#9C27B0', '#607D8B'],
+                backgroundColor: '#f0f4f8',
+                chartArea: { width: '90%', height: '80%' }
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('chart2'));
+            chart2.draw(data2, options2);
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Rahul's Tech Mobile Sales Dashboard - 2024</h1>
+    </header>
+
+    <div class="container">
+        <div class="chart-container">
+            <div class="chart" id="chart1"></div>
+            <div class="chart" id="chart2"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Rahul's Tech. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
